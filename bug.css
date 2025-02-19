@@ -1,0 +1,7 @@
+The CSS property `calc()` is not working as expected when used with percentages inside a `media query`. For example, the following code may not produce the expected result:
+```css
+@media (max-width: calc(100vw - 100px)) {
+  /* Styles to be applied when the viewport width is less than 100vw - 100px */
+}
+```
+This is because `calc()` within a `media query` can have inconsistencies in different browsers.  The `vw` unit might not be interpreted correctly in the calculation when subtracted from a pixel value.
