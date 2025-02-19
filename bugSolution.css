@@ -1,0 +1,15 @@
+One solution to this problem is to avoid using percentages directly within the `calc()` function inside the media query. Instead, consider using JavaScript to calculate the value and then applying it as a CSS custom property or in a separate stylesheet.  This would ensure consistent behavior across different browsers. For example, you might use the following JavaScript:
+
+```javascript
+const vw = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+const maxWidth = vw - 100; 
+document.documentElement.style.setProperty('--max-width', `${maxWidth}px`);
+```
+
+And then in your CSS:
+```css
+@media (max-width: var(--max-width)) {
+  /* Styles to be applied */
+}
+```
+This allows the calculation to be performed consistently, independent of how browsers interpret the `calc()` function within media queries.
